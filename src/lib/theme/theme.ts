@@ -1,4 +1,4 @@
-// Material UI theme customization
+// Material UI Theme Customization
 import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
