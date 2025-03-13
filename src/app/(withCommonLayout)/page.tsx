@@ -11,12 +11,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-{/* 
-  <div className="bg-blue-500 text-white text-center rounded p-6">
-      <Spline
-        scene="https://prod.spline.design/n-Q0XpgAs1qqVG9G/scene.splinecode"
-      />
-  </div> 
-*/}

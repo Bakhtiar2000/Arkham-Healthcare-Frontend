@@ -1,28 +1,28 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Providers from '@/lib/providers/Providers';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Providers from "@/lib/providers/Providers";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Arkham Healthcare',
-  description: 'Dashboard',
-}
+  title: "Arkham Healthcare",
+  description: "Dashboard",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <Providers>
-      {/* Material UI Provider wrapping up */}
       <html lang="en">
         <body className={inter.className}>
-          <AppRouterCacheProvider>{children}</AppRouterCacheProvider></body>
+          <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        </body>
       </html>
     </Providers>
-  )
+  );
 }
