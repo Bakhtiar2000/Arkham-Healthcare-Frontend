@@ -1,7 +1,7 @@
+// This file contains all the assets to be used with dot notation in other files
+
 const assets = {
   images: {
-    // images will go here
-
     doctors: require("./landing_page/doctors.png"),
     atm: require("./landing_page/atm-card.png"),
     videoCall: require("./landing_page/video_call.png"),
