@@ -2,6 +2,7 @@ export const setToLocalStorage = (key: string, token: string) => {
   if (!key || typeof window === "undefined") {
     return "";
   }
+  console.log(key, token);
   return localStorage.setItem(key, token);
 };
 

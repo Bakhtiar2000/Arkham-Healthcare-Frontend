@@ -13,23 +13,26 @@ import PHInput from "@/components/forms/PHInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
-  password: z.string().min(6, "Must be at least 6 characters"),
+  password: z.string().min(5, "Must be at least 5 characters"),
 });
 
 const LoginPage = () => {
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleLogin = async (values: FieldValues) => {
     // console.log(values);
     try {
       const res = await userLogin(values);
-      if (res?.data?.accessTokeLn) {
+      if (res?.data?.accessToken) {
         toast.success(res?.message);
+        console.log(res?.data?.accessToken);
         storeUserInfo({ accessToken: res?.data?.accessToken });
-        // router.push("/dashboard");
+        router.push("/");
       } else {
         setError(res.message);
         // console.log(res);

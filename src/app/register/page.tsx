@@ -1,17 +1,9 @@
 "use client"; // Because we use form validation and submission in the client side
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import { FieldValues } from "react-hook-form";
 import { ModifyPayload } from "@/utils/ModifyPayload";
 import { registerPatient } from "@/services/actions/registerPatient";
 import { toast } from "sonner";
@@ -52,7 +44,6 @@ const RegisterPage = () => {
 
   const handleRegister = async (values: FieldValues) => {
     const data = ModifyPayload(values);
-    // console.log(data);
     try {
       const res = await registerPatient(data);
       // console.log(res);
@@ -64,7 +55,7 @@ const RegisterPage = () => {
         });
         if (result?.data?.accessToken) {
           storeUserInfo({ accessToken: result?.data?.accessToken });
-          router.push("/dashboard");
+          router.push("/");
         }
       }
     } catch (err: any) {
