@@ -15,12 +15,13 @@ import PHInput from "@/components/forms/PHInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+// Validation schema
 export const patientValidationSchema = z.object({
   name: z.string().min(1, "Please enter your name!"),
   email: z.string().email("Please enter a valid email address!"),
   contactNumber: z
     .string()
-    .regex(/^\d{11}$/, "Please provide a valid phone number!"),
+    .regex(/^\d{11}$/, "Please provide a valid phone number (11 digits)!"),
   address: z.string().min(1, "Please enter your address!"),
 });
 
@@ -29,6 +30,7 @@ export const validationSchema = z.object({
   patient: patientValidationSchema,
 });
 
+// Default values
 export const defaultValues = {
   password: "",
   patient: {
@@ -102,7 +104,7 @@ const RegisterPage = () => {
             <PHForm
               onSubmit={handleRegister}
               resolver={zodResolver(validationSchema)}
-              defaultValues={defaultValues}
+              defaultValues={defaultValues} // Had to provide default values to show our custome error message properly
             >
               <Grid container spacing={2} my={1}>
                 <Grid item md={12}>

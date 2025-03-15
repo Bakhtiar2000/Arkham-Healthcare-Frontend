@@ -15,17 +15,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+// Validation schema
 export const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address!"),
   password: z.string().min(5, "Must be at least 5 characters"),
 });
 
+// Default values
+export const defaultValues = {
+  email: "",
+  password: "",
+};
+
 const LoginPage = () => {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  // Handle login
   const handleLogin = async (values: FieldValues) => {
-    // console.log(values);
     try {
       const res = await userLogin(values);
       if (res?.data?.accessToken) {
@@ -35,7 +42,6 @@ const LoginPage = () => {
         router.push("/");
       } else {
         setError(res.message);
-        // console.log(res);
       }
     } catch (err: any) {
       console.error(err.message);
@@ -96,11 +102,8 @@ const LoginPage = () => {
           <Box>
             <PHForm
               onSubmit={handleLogin}
-              resolver={zodResolver(validationSchema)}
-              defaultValues={{
-                email: "",
-                password: "",
-              }}
+              resolver={zodResolver(validationSchema)} // Form validation
+              defaultValues={defaultValues} // Default values
             >
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>

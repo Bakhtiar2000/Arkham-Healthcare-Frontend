@@ -15,7 +15,7 @@ type TInputProps = {
 const PHInput = ({
   name,
   label,
-  type = "text",
+  type = "text", // Default type is text
   size = "small",
   fullWidth,
   sx,
@@ -37,7 +37,7 @@ const PHInput = ({
           fullWidth={fullWidth}
           placeholder={label}
           required={required}
-          error={!!error?.message}
+          error={!!error?.message} // !! (double negation) is used to convert a value into a boolean explicitly.
           helperText={error?.message}
         />
       )}

@@ -23,15 +23,10 @@ const PHForm = ({
 }: TFormProps) => {
   const formConfig: TFormConfig = {};
 
-  if (resolver) {
-    formConfig["resolver"] = resolver;
-  }
+  if (resolver) formConfig["resolver"] = resolver;
+  if (defaultValues) formConfig["defaultValues"] = defaultValues;
 
-  if (defaultValues) {
-    formConfig["defaultValues"] = defaultValues;
-  }
-
-  const methods = useForm(formConfig);
+  const methods = useForm(formConfig); // Added validation resolver and default values
   const { handleSubmit, reset } = methods;
 
   const submit: SubmitHandler<FieldValues> = (data) => {
