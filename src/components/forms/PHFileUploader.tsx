@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SxProps, styled } from "@mui/material/styles";
+import { SxProps } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Controller, useFormContext } from "react-hook-form";
@@ -12,8 +12,9 @@ type TProps = {
 };
 
 export default function PHFileUploader({ name, label, sx }: TProps) {
-  const { control } = useFormContext();
+  const { control } = useFormContext(); // react-hook-form's context
   return (
+    // Need to use controller for this component to be controlled by react-hook-form
     <Controller
       name={name}
       control={control}

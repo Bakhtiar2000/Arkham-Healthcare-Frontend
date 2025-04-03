@@ -39,7 +39,7 @@ const LoginPage = () => {
         toast.success(res?.message);
         console.log(res?.data?.accessToken);
         storeUserInfo({ accessToken: res?.data?.accessToken });
-        router.push("/");
+        router.push("/dashboard");
       } else {
         setError(res.message);
       }

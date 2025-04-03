@@ -10,6 +10,8 @@ import { drawerItems } from "@/utils/drawerItems";
 
 const SideBar = () => {
   const [userRole, setUserRole] = useState("");
+
+  // To prevent Hydration error, we used useEffect here rather than using the role directly
   useEffect(() => {
     const { role } = getUserInfo() as any;
     setUserRole(role);
