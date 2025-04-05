@@ -2,7 +2,7 @@ import PHFileUploader from "@/components/forms/PHFileUploader";
 import PHForm from "@/components/forms/PHForm";
 import PHInput from "@/components/forms/PHInput";
 import PHModal from "@/components/shared/modal/PHModal";
-// import { useCreateSpecialtyMutation } from "@/redux/api/specialtiesApi";
+import { useCreateSpecialtyMutation } from "@/redux/api/specialtiesApi";
 import { ModifyPayload } from "@/utils/ModifyPayload";
 import { Button, Grid } from "@mui/material";
 
@@ -16,20 +16,20 @@ type TProps = {
 };
 
 const SpecialtyModal = ({ open, setOpen }: TProps) => {
-  // const [createSpecialty] = useCreateSpecialtyMutation();
+  const [createSpecialty] = useCreateSpecialtyMutation();
 
   const handleFormSubmit = async (values: FieldValues) => {
-    // const data = ModifyPayload(values);
-    // try {
-    //   const res = await createSpecialty(data).unwrap();
-    //   console.log(res);
-    //   if (res?.id) {
-    //     toast.success("Specialty created successfully!!");
-    //     setOpen(false);
-    //   }
-    // } catch (err: any) {
-    //   console.error(err.message);
-    // }
+    const data = ModifyPayload(values);
+    try {
+      const res = await createSpecialty(data).unwrap(); // Unwrap the promise to get the response directly
+      console.log(res);
+      if (res?.id) {
+        toast.success("Specialty created successfully!!");
+        setOpen(false);
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
 
   return (
