@@ -8,7 +8,7 @@ import {
 } from "@/redux/api/doctorApi";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import { useDebounced } from "@/redux/hooks";
+import { useDebounced } from "@/redux/hooks";
 import { toast } from "sonner";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link";
@@ -17,30 +17,19 @@ const DoctorsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const query: Record<string, any> = {};
   const [searchTerm, setSearchTerm] = useState<string>("");
-  // console.log(searchTerm);
 
-  // const debouncedTerm = useDebounced({
-  //   searchQuery: searchTerm,
-  //   delay: 600,
-  // });
+  // We delay for 600ms for a query to execute. Otherwise, there are too many request on the server as the onchange function sends request on every change
+  const debouncedTerm = useDebounced({ searchQuery: searchTerm, delay: 600 });
+  if (!!debouncedTerm) query["searchTerm"] = searchTerm; // !! (double negation) is a common trick used to convert any value to a boolean (true or false).
 
-  // if (!!debouncedTerm) {
-  //   query["searchTerm"] = searchTerm;
-  // }
-
-  const { data, isLoading } = useGetAllDoctorsQuery({ ...query });
+  const { data, isLoading } = useGetAllDoctorsQuery(query);
   const [deleteDoctor] = useDeleteDoctorMutation();
-
-  // console.log(data);
   const doctors = data?.doctors;
   const meta = data?.meta;
-  // console.log(doctors);
 
   const handleDelete = async (id: string) => {
-    // console.log(id);
     try {
       const res = await deleteDoctor(id).unwrap();
-      // console.log(res);
       if (res?.id) {
         toast.success("Doctor deleted successfully!!!");
       }

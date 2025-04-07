@@ -16,7 +16,7 @@ interface IDatePicker {
 
 const PHDatePicker = ({
   name,
-  size = "small",
+  size = "small", // default
   label,
   required,
   fullWidth = true,
