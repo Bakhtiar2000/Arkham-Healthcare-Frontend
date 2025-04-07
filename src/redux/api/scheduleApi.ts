@@ -1,6 +1,7 @@
 import { baseApi } from "./baseApi";
 import { tagTypes } from "../tag-types";
 import { IMeta } from "@/types/common";
+import { ISchedule } from "@/types/schedule";
 
 export const scheduleApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -23,7 +24,7 @@ export const scheduleApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      transformResponse: (response: [], meta: IMeta) => {
+      transformResponse: (response: ISchedule[], meta: IMeta) => {
         return {
           schedules: response,
           meta,

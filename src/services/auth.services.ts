@@ -1,4 +1,4 @@
-// import { instance as axiosInstance } from "@/helpers/axios/axiosInstance";
+import { axiosInstance } from "@/helpers/axios/axiosInstance";
 import {
   getFromLocalStorage,
   removeFromLocalStorage,
@@ -36,11 +36,11 @@ export const removeUser = () => {
   return removeFromLocalStorage(authKey);
 };
 
-// export const getNewAccessToken = async () => {
-//   return await axiosInstance({
-//     url: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/refresh-token`,
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     withCredentials: true,
-//   });
-// };
+export const getNewAccessToken = async () => {
+  return await axiosInstance({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/auth/refresh-token`,
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    withCredentials: true,
+  });
+};

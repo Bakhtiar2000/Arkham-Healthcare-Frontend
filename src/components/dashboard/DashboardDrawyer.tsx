@@ -13,7 +13,7 @@ import SideBar from "./SideBar";
 import { Avatar, Badge, Stack } from "@mui/material";
 import AccountMenu from "./AccountMenu";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-// import { useGetSingleUserQuery } from "@/redux/api/userApi";
+import { useGetSingleUserQuery } from "@/redux/api/userApi";
 
 const drawerWidth = 240;
 
@@ -39,9 +39,7 @@ export default function DashboardDrawer({
       setMobileOpen(!mobileOpen);
     }
   };
-
-  // const { data, isLoading } = useGetSingleUserQuery({});
-  // console.log(data);
+  const { data, isLoading } = useGetSingleUserQuery({});
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -82,7 +80,7 @@ export default function DashboardDrawer({
                 component="div"
                 sx={{ color: "rgba(11, 17, 52, 0.6)" }}
               >
-                {/* Hi, {isLoading ? "Loading..." : data?.name}, */}
+                Hi, {isLoading ? "Loading..." : data?.name}
               </Typography>
               <Typography
                 variant="h6"
@@ -99,7 +97,7 @@ export default function DashboardDrawer({
                   <NotificationsNoneIcon color="action" />
                 </IconButton>
               </Badge>
-              {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
+              <Avatar alt={data?.name} src={data?.profilePhoto} />
               <AccountMenu />
             </Stack>
           </Box>
