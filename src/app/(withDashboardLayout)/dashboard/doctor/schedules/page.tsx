@@ -43,8 +43,8 @@ const DoctorSchedulesPage = () => {
   useEffect(() => {
     const updateData = schedules?.map((schedule: ISchedule, index: number) => {
       return {
-        id: schedule?.scheduleId,
-        startDate: dateFormatter(schedule?.schedule?.startDate),
+        id: schedule.id,
+        startDate: dayjs(schedule?.startDateTime).format("DD MMM, YYYY"),
         startTime: dayjs(schedule?.startDateTime).format("hh:mm a"),
         endTime: dayjs(schedule?.endDateTime).format("hh:mm a"),
       };
