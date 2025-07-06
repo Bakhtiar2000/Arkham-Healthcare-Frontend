@@ -45,8 +45,6 @@ export default function MultipleSelectFieldChip({
   setSelectedScheduleIds,
 }: any) {
   const theme = useTheme();
-  // const [personName, setPersonName] = React.useState<string[]>([]);
-
   const handleChange = (
     event: SelectChangeEvent<typeof selectedScheduleIds>
   ) => {

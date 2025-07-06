@@ -4,7 +4,6 @@ import DoctorScheduleModal from "./components/DoctorScheduleModal";
 import { useEffect, useState } from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { dateFormatter } from "@/utils/dateFormatter";
 import { ISchedule } from "@/types/schedule";
 import dayjs from "dayjs";
 import { useGetAllDoctorSchedulesQuery } from "@/redux/api/doctorScheduleApi";
@@ -23,7 +22,6 @@ const DoctorSchedulesPage = () => {
 
   const [allSchedule, setAllSchedule] = useState<any>([]);
   const { data, isLoading } = useGetAllDoctorSchedulesQuery({ ...query });
-  console.log(data);
 
   const schedules = data?.doctorSchedules;
   const meta = data?.meta;
